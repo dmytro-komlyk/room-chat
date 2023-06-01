@@ -1,6 +1,6 @@
 import { RouterContext } from 'next/dist/shared/lib/router-context';
 import * as NextImage from 'next/image';
-import '../app/globals.css';
+import '../styles/globals.css';
 
 const BREAKPOINTS_INT = {
   xs: 0,
