@@ -1,0 +1,29 @@
+.authForm {
+  @apply flex flex-col gap-7;
+
+  :global(.MuiInputBase-formControl) {
+    & :focus + .input_icon svg {
+      color: #6366f1;
+    }
+
+    & :not([type='email']) ~ .input_icon:hover * {
+      cursor: pointer;
+    }
+  }
+
+  .input_text {
+    @apply w-full border-2 rounded-xl bg-slate-50;
+    @apply focus:outline-none border-none;
+  }
+
+  .input_button {
+    @apply w-full bg-gradient-to-r from-blue-500 to-indigo-500 rounded-md;
+    @apply py-3 text-gray-50 text-lg;
+  }
+
+  .input_button:hover {
+    @apply py-2.5 border-2 border-solid border-indigo-800;
+    @apply bg-gradient-to-r from-gray-50 to-gray-100;
+    @apply text-gray-700;
+  }
+}
