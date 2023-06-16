@@ -1,0 +1,42 @@
+.switchLanguage {
+  @apply p-2;
+
+  :global(.MuiSwitch-switchBase) {
+    @apply text-slate-700;
+
+    :global(.MuiSwitch-thumb) {
+      @apply w-5;
+      @apply h-5;
+      @apply shadow-none;
+    }
+  }
+
+  :global(.MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track) {
+    @apply bg-slate-700;
+  }
+
+  :global(.MuiSwitch-track) {
+    @apply rounded-xl;
+    @apply bg-slate-700;
+
+    &::before,
+    &::after {
+      content: '';
+      @apply absolute;
+      @apply top-1/2;
+      @apply translate-y-[-80%];
+      @apply w-3.5;
+      @apply h-3.5;
+      @apply text-sm;
+      @apply text-white;
+    }
+    &::before {
+      content: 'ua';
+      @apply left-3;
+    }
+    &::after {
+      content: 'en';
+      @apply right-3.5;
+    }
+  }
+}
