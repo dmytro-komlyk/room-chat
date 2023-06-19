@@ -1,0 +1,15 @@
+{
+  "sidebar": {
+    "nav": {
+      "home": "ГОЛОВНА",
+      "chat": "ЧАТ",
+      "contact": "КОНТАКТИ",
+      "notifications": "СПОВІЩЕННЯ",
+      "calendar": "КАЛЕНДАР",
+      "settings": "НАЛАШТУВАННЯ"
+    },
+    "controls": {
+      "logOut": "ВИЙТИ"
+    }
+  }
+}

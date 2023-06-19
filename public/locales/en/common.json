@@ -1,0 +1,15 @@
+{
+  "sidebar": {
+    "nav": {
+      "home": "HOME",
+      "chat": "CHAT",
+      "contact": "CONTACT",
+      "notifications": "NOTIFICATIONS",
+      "calendar": "CALENDAR",
+      "settings": "SETTINGS"
+    },
+    "controls": {
+      "logOut": "LOG OUT"
+    }
+  }
+}

@@ -18,27 +18,31 @@ import {
   Stack,
   Typography,
 } from '@mui/material';
+import { useTranslation } from 'next-i18next';
 import Image from 'next/image';
 import * as React from 'react';
 import admin from '../../../public/admin.png';
 import LanguageSwitch from '../../switch/language/LanguageSwitch';
 import ThemeUISwitch from '../../switch/theme/ThemeUISwitch';
 
+const navItems = [
+  { Icon: WindowIcon, value: 'home' },
+  { Icon: ChatIcon, value: 'chat' },
+  { Icon: PersonOutlineIcon, value: 'contact' },
+  { Icon: NotificationsNoneIcon, value: 'notifications' },
+  { Icon: CalendarMonthIcon, value: 'calendar' },
+  { Icon: SettingsIcon, value: 'settings' },
+];
+
 export interface ISidebarLayoutProps {
   children: React.ReactNode;
   toggleTheme: () => void;
+  toggleLanguage: () => void;
 }
 
-const navItems = [
-  { Icon: WindowIcon, value: 'HOME' },
-  { Icon: ChatIcon, value: 'CHAT' },
-  { Icon: PersonOutlineIcon, value: 'CONTACT' },
-  { Icon: NotificationsNoneIcon, value: 'NOTIFICATIONS' },
-  { Icon: CalendarMonthIcon, value: 'CALENDAR' },
-  { Icon: SettingsIcon, value: 'SETTINGS' },
-];
-
 const SidebarLayout: React.FC<ISidebarLayoutProps> = (props) => {
+  const { t } = useTranslation();
+
   return (
     <AppBar
       component="nav"
@@ -67,7 +71,7 @@ const SidebarLayout: React.FC<ISidebarLayoutProps> = (props) => {
               <Icon fontSize="medium" className="group-hover:fill-blue-500" />
             </ListItemIcon>
             <ListItemText className="hidden lg:inline-block group-hover:text-blue-500">
-              {value}
+              {t(`sidebar.nav.${value}`)}
             </ListItemText>
           </MenuItem>
         ))}
@@ -80,16 +84,18 @@ const SidebarLayout: React.FC<ISidebarLayoutProps> = (props) => {
         />
         <FormControlLabel
           className="m-0"
-          control={<LanguageSwitch />}
+          control={<LanguageSwitch onChange={props.toggleLanguage} />}
           label=""
         />
         <Button
-          className="group text-slate-500 hover:text-blue-500"
+          className="basis-full group text-slate-500 hover:text-blue-500"
           variant="text"
           size="large"
           startIcon={<LogoutIcon className="group-hover:fill-blue-500" />}
         >
-          <span className="hidden lg:inline-block">LOG OUT</span>
+          <span className="hidden lg:inline-block">
+            {t('sidebar.controls.logOut')}
+          </span>
         </Button>
       </FormGroup>
     </AppBar>
