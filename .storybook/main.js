@@ -1,5 +1,5 @@
 const config = {
-  stories: ['../(components|app)/**/*.stories.@(js|jsx|ts|tsx)'],
+  stories: ['../components/**/*.stories.@(js|jsx|ts|tsx)'],
   staticDirs: ['../public'],
   addons: [
     '@storybook/addon-links',
