@@ -1,8 +1,12 @@
-import { Switch, SwitchProps } from '@mui/material';
+import { Switch } from '@mui/material';
 import styles from './ThemeUISwitch.module.scss';
 
-const ThemeUISwitch = (props: SwitchProps) => {
-  return <Switch className={styles.switchTheme} {...props} />;
+interface IThemeUISwitch {
+  onChange: () => void;
+}
+
+const ThemeUISwitch = ({ onChange }: IThemeUISwitch) => {
+  return <Switch className={styles.switchTheme} onChange={onChange} />;
 };
 
 export default ThemeUISwitch;
