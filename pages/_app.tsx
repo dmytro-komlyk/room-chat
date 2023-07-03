@@ -5,6 +5,8 @@ import { appWithTranslation } from 'next-i18next';
 import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import { Provider as ReduxProvider } from 'react-redux';
+import { wrapper } from '../lib/redux';
 import '../styles/globals.css';
 import getActiveTheme, { lightTheme } from '../theme/theme';
 import { NextPageWithLayout } from './page';
@@ -13,11 +15,12 @@ interface AppPropsWithLayout extends AppProps {
   Component: NextPageWithLayout;
 }
 
-const MyApp = (props: AppPropsWithLayout) => {
+const MyApp = ({ Component, ...rest }: AppPropsWithLayout) => {
   const [activeTheme, setActiveTheme] = useState(lightTheme);
   const [selectedTheme, setSelectedTheme] = useState<'light' | 'dark'>('light');
   const router = useRouter();
-  const { Component, pageProps } = props;
+  const { store, props } = wrapper.useWrappedStore(rest);
+  const { pageProps } = props;
   const getLayout = Component.getLayout || ((page) => page);
 
   const toggleTheme = () => {
@@ -37,21 +40,23 @@ const MyApp = (props: AppPropsWithLayout) => {
   }, [selectedTheme]);
 
   return (
-    <ThemeProvider theme={activeTheme}>
-      <StyledEngineProvider injectFirst>
-        <CssBaseline />
-        <SessionProvider session={pageProps.session}>
-          {getLayout(
-            <Component
-              {...pageProps}
-              toggleTheme={toggleTheme}
-              toggleLanguage={toggleLanguage}
-            />
-          )}
-        </SessionProvider>
-      </StyledEngineProvider>
-    </ThemeProvider>
+    <ReduxProvider store={store}>
+      <ThemeProvider theme={activeTheme}>
+        <StyledEngineProvider injectFirst>
+          <CssBaseline />
+          <SessionProvider session={pageProps.session}>
+            {getLayout(
+              <Component
+                {...pageProps}
+                toggleTheme={toggleTheme}
+                toggleLanguage={toggleLanguage}
+              />
+            )}
+          </SessionProvider>
+        </StyledEngineProvider>
+      </ThemeProvider>
+    </ReduxProvider>
   );
 };
 
-export default appWithTranslation(MyApp);
+export default wrapper.withRedux(appWithTranslation(MyApp));

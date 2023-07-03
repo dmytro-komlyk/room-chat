@@ -1,3 +1,4 @@
+import { wrapper } from '@/lib/redux';
 import { useSession } from 'next-auth/react';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
@@ -8,7 +9,8 @@ import { NextPageWithLayout } from './page';
 const Home: NextPageWithLayout = () => {
   const { status } = useSession();
   const { t } = useTranslation();
-
+  // const rooms = useSelector(selectRooms);
+  // console.log(rooms);
   return status === 'authenticated' ? (
     <div
       className={`fixed top-0 right-0 h-full w-[calc(100%-4rem)] lg:w-[calc(100%-15rem)] bg-gradient-to-r from-[#F3F3FB] to-[#FDFBFD]`}
@@ -31,14 +33,15 @@ Home.getLayout = (page) => {
   );
 };
 
-export async function getStaticProps(context: { locale: string }) {
-  // extract the locale identifier from the URL
-  const { locale } = context;
+export const getServerSideProps = wrapper.getServerSideProps((store) => {
+  return async ({ req, res, query, locale, ...etc }) => {
+    // await store.dispatch();
 
-  return {
-    props: {
-      // pass the translation props to the page component
-      ...(await serverSideTranslations(locale)),
-    },
+    return {
+      props: {
+        // pass the translation props to the page component
+        ...(await serverSideTranslations(locale as string)),
+      },
+    };
   };
-}
+});
