@@ -1,6 +1,6 @@
 import { signIn } from 'next-auth/react';
 import * as yup from 'yup';
-import { ILoginUserParams } from '../types/index';
+import { ILoginUserParams } from '../common/types/index';
 
 // const passwordRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}$/;
 

@@ -1,9 +1,9 @@
 import { compare } from 'bcryptjs';
 import NextAuth, { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
+import { IUser } from '../../../common/types';
 import { connectToMongoDB } from '../../../lib/mongodb';
 import User from '../../../models/user';
-import { IUser } from '../../../types';
 
 export const options: NextAuthOptions = {
   // Configure one or more authentication providers

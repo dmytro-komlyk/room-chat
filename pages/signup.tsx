@@ -2,10 +2,10 @@ import axios from 'axios';
 import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { IRegisterUserParams } from '../common/types/index';
 import RegisterForm from '../components/form/registerform/RegisterForm';
 import AuthLayout from '../components/layouts/auth/AuthLayout';
 import { loginUser } from '../helpers/authentication';
-import { IRegisterUserParams } from '../types/index';
 import { NextPageWithLayout } from './page';
 
 const SignUp: NextPageWithLayout = () => {

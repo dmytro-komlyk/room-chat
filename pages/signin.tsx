@@ -1,10 +1,10 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { ILoginUserParams } from '../common/types/index';
 import LoginForm from '../components/form/loginform/LoginForm';
 import AuthLayout from '../components/layouts/auth/AuthLayout';
 import { loginUser } from '../helpers/authentication';
-import { ILoginUserParams } from '../types/index';
 import { NextPageWithLayout } from './page';
 
 const SignIn: NextPageWithLayout = () => {

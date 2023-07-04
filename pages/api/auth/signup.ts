@@ -1,9 +1,9 @@
 import { hash } from 'bcryptjs';
 import mongoose from 'mongoose';
 import { NextApiRequest, NextApiResponse } from 'next';
+import { IUser } from '../../../common/types';
 import { connectToMongoDB } from '../../../lib/mongodb';
 import User from '../../../models/user';
-import { IUser } from '../../../types';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   connectToMongoDB().catch(() => res.json({ error: 'Connection Failed...!' }));
