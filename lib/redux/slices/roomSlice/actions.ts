@@ -1,6 +1,6 @@
 import { roomServices } from '@/services';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { ActionType } from './common.js';
+import { ActionType } from './common';
 
 const loadRooms = createAsyncThunk(
   ActionType.SET_ALL_ROOMS,
