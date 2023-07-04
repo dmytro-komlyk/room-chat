@@ -1,0 +1,8 @@
+const { NEXT_PUBLIC_APP_SITE_URL, NEXT_PUBLIC_APP_API_PATH } = process.env;
+
+const ENV = {
+  SITE_URL: NEXT_PUBLIC_APP_SITE_URL,
+  API_PATH: NEXT_PUBLIC_APP_API_PATH,
+};
+
+export { ENV };
