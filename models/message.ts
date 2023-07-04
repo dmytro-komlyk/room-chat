@@ -25,6 +25,6 @@ const MessageShema = new Schema(
   }
 );
 
-const Message = models.Message || model('Message', MessageShema);
+const Message = models?.Message || model('Message', MessageShema);
 
 export default Message;

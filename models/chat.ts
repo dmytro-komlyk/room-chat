@@ -8,6 +8,6 @@ const ChatShema = new Schema({
   messages: { type: Array, default: [] },
 });
 
-const Chat = models.Chat || model('Chat', ChatShema);
+const Chat = models?.Chat || model('Chat', ChatShema);
 
 export default Chat;

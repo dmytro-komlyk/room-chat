@@ -28,6 +28,6 @@ const ContactShema = new Schema(
   }
 );
 
-const Contact = models.Contact || model('Contact', ContactShema);
+const Contact = models?.Contact || model('Contact', ContactShema);
 
 export default Contact;
