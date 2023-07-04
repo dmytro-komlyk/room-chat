@@ -1,9 +1,10 @@
 import { combineReducers } from 'redux';
 /* Instruments */
-import { roomSlice } from './slices';
+import { chatSlice, roomSlice } from './slices';
 
 const rootReducers = combineReducers({
   [roomSlice.name]: roomSlice.reducer,
+  [chatSlice.name]: chatSlice.reducer,
 });
 
 export default rootReducers;

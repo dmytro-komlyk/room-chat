@@ -15,10 +15,10 @@ import {
 /* Instruments */
 import { middleware } from './middleware';
 import rootReducers from './rootReducer';
-import { IRoomState } from './slices';
+import { IChatState, IRoomState } from './slices';
 
 const reducer = (
-  state: CombinedState<{ room: IRoomState }> | undefined,
+  state: CombinedState<{ room: IRoomState; chat: IChatState }> | undefined,
   action: AnyAction
 ) => {
   if (action.type === HYDRATE) {

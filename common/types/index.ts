@@ -52,3 +52,14 @@ export interface IRoom {
   createdAt: String;
   updatedAt: String;
 }
+
+export interface IChat {
+  _id?: String;
+  user: {
+    id: string;
+    image: IImage;
+    userName: string;
+    nickName: string;
+  };
+  messages: Array<IMessage>;
+}
