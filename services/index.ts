@@ -1,5 +1,6 @@
 import { ENV } from '@/common/enums';
 import { Chat } from './chatServices';
+import { Contact } from './contactServices';
 import { Http } from './httpServices';
 import { Room } from './roomServices';
 
@@ -17,4 +18,9 @@ const chatServices = new Chat({
   http,
 });
 
-export { chatServices, http, roomServices };
+const contactServices = new Contact({
+  apiPath: ENV.API_PATH,
+  http,
+});
+
+export { chatServices, contactServices, http, roomServices };

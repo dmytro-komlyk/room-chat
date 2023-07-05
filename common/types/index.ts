@@ -22,9 +22,9 @@ export interface IImage {
 }
 
 export interface IContact {
+  _id: String;
   image: IImage;
   userId: String;
-  contactId: String;
   userName: String;
   nickName: String;
   email: String;
