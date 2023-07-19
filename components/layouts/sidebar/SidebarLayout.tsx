@@ -1,3 +1,4 @@
+import { signOutUser } from '@/helpers/authentication';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import ChatIcon from '@mui/icons-material/Chat';
 import LogoutIcon from '@mui/icons-material/Logout';
@@ -42,6 +43,9 @@ export interface ISidebarLayoutProps {
 
 const SidebarLayout: React.FC<ISidebarLayoutProps> = (props) => {
   const { t } = useTranslation();
+  // const router = useRouter();
+
+  const handleSignOut = async () => await signOutUser();
 
   return (
     <AppBar
@@ -65,7 +69,7 @@ const SidebarLayout: React.FC<ISidebarLayoutProps> = (props) => {
         {navItems.map(({ Icon, value }, id) => (
           <MenuItem
             key={id}
-            className="group hover:pl-3 hover:border-l-4 border-solid border-blue-500"
+            className="group hover:pl-3 hover:border-l-4 border-solid border-blue-500 hover:bg-gradient-to-r from-[#FDFBFD] to-[#F3F3FB]"
           >
             <ListItemIcon>
               <Icon fontSize="medium" className="group-hover:fill-blue-500" />
@@ -92,6 +96,7 @@ const SidebarLayout: React.FC<ISidebarLayoutProps> = (props) => {
           variant="text"
           size="large"
           startIcon={<LogoutIcon className="group-hover:fill-blue-500" />}
+          onClick={handleSignOut}
         >
           <span className="hidden lg:inline-block">
             {t('sidebar.controls.logOut')}

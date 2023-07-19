@@ -1,8 +1,9 @@
-import { signIn } from 'next-auth/react';
+import { signIn, signOut } from 'next-auth/react';
 import * as yup from 'yup';
 import { ILoginUserParams } from '../common/types/index';
 
 // const passwordRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}$/;
+export const signOutUser = async () => await signOut();
 
 export const loginUser = async ({ email, password }: ILoginUserParams) => {
   const res = await signIn('credentials', {
