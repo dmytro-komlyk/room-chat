@@ -43,7 +43,6 @@ export interface ISidebarLayoutProps {
 
 const SidebarLayout: React.FC<ISidebarLayoutProps> = (props) => {
   const { t } = useTranslation();
-  // const router = useRouter();
 
   const handleSignOut = async () => await signOutUser();
 
